@@ -5,7 +5,20 @@
   text-align: center;
 }
 
-.main-board {
+.board {
   border: solid 2px rgba(255, 255, 255, 0.87);
   border-radius: 1rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttons {
+  border: solid 1px rgba(255, 255, 255, 0.87);
+}
+
+.details {
+  border: solid 1px rgba(255, 255, 255, 0.87);
 }
