@@ -9,12 +9,7 @@ function Board({ nbOfRows }: BoardProps) {
     return <Row key={index + 1} />;
   });
 
-  return (
-    <div className="board">
-      Je contiens le board de jeux
-      {rows}
-    </div>
-  );
+  return <div className="board">{rows}</div>;
 }
 
 export default Board;

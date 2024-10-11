@@ -1,8 +1,17 @@
+import Buttons from "./Buttons";
+import Details from "./Details";
+
 function Row() {
   return (
     <div className="row">
-      <div className="buttons">Buttons</div>Je suis une ligne du jeu
-      <div className="details">Détails</div>
+      <Buttons />
+      <div className="bubbles">
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+      </div>
+      <Details />
     </div>
   );
 }
