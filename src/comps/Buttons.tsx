@@ -1,16 +1,13 @@
-function Buttons() {
-  const handleConfirm = () => {
-    console.log("Confirming my choices");
-  };
+interface ButtonProps {
+  onClear: () => void;
+  onConfirm: () => void;
+}
 
-  const handleClear = () => {
-    console.log("Clearing the line");
-  };
-
+function Buttons({ onClear, onConfirm }: ButtonProps) {
   return (
     <div className="buttons">
-      <button onClick={handleConfirm}>Confirm</button>
-      <button onClick={handleClear}>Clear</button>
+      <button onClick={onConfirm}>Confirm</button>
+      <button onClick={onClear}>Clear</button>
     </div>
   );
 }

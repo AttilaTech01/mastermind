@@ -1,9 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
-export interface Option {
-  color: string;
-  id: number;
-}
+import { Option } from "../commons/Option";
 
 interface BubbleProps {
   options: Option[];
@@ -48,13 +44,9 @@ function Bubble({ options, value, onChange }: BubbleProps) {
     </div>
   ));
 
-  const content = value?.color || "";
-
   return (
-    <div ref={divEl} className="bubble">
-      <div className="selector" onClick={handleToggleOpen}>
-        {content}
-      </div>
+    <div ref={divEl} className={`bubble ${value?.color}`}>
+      <div className="selector" onClick={handleToggleOpen} />
       {isOpen && <div className="options">{renderedOptions}</div>}
     </div>
   );

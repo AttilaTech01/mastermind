@@ -37,6 +37,17 @@
   margin: 0.2rem;
 }
 
+/* TODO : can be better */
+.details-item.null {
+  background-color: transparent;
+}
+.details-item.valid {
+  background-color: black;
+}
+.details-item.perfect {
+  background-color: white;
+}
+
 .bubbles {
   display: flex;
 }
@@ -47,6 +58,26 @@
   height: 44px;
   width: 44px;
   margin: 0.5rem 1rem;
+}
+
+/* TODO : can be better */
+.bubble.red {
+  background-color: red;
+}
+.bubble.blue {
+  background-color: blue;
+}
+.bubble.yellow {
+  background-color: yellow;
+}
+.bubble.green {
+  background-color: green;
+}
+.bubble.pink {
+  background-color: pink;
+}
+.bubble.purple {
+  background-color: purple;
 }
 
 .bubble > .selector {
