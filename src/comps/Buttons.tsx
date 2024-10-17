@@ -1,13 +1,18 @@
 interface ButtonProps {
+  disabled: boolean;
   onClear: () => void;
   onConfirm: () => void;
 }
 
-function Buttons({ onClear, onConfirm }: ButtonProps) {
+function Buttons({ disabled, onClear, onConfirm }: ButtonProps) {
   return (
     <div className="buttons">
-      <button onClick={onConfirm}>Confirm</button>
-      <button onClick={onClear}>Clear</button>
+      <button disabled={disabled} onClick={onConfirm}>
+        Confirm
+      </button>
+      <button disabled={disabled} onClick={onClear}>
+        Clear
+      </button>
     </div>
   );
 }

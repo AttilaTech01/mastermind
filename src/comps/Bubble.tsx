@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { Option } from "../commons/Option";
 
 interface BubbleProps {
+  locked: boolean;
   options: Option[];
   value?: Option;
   onChange: (option: Option) => void;
 }
 
-function Bubble({ options, value, onChange }: BubbleProps) {
+function Bubble({ locked, options, value, onChange }: BubbleProps) {
+  const [isLocked, setIsLocked] = useState<boolean>(locked ? true : false);
   const [isOpen, setIsOpen] = useState(false);
   const divEl = useRef<HTMLDivElement>(null);
 
@@ -29,8 +31,14 @@ function Bubble({ options, value, onChange }: BubbleProps) {
     };
   }, []);
 
+  useEffect(() => {
+    setIsLocked(locked ? true : false);
+  }, [locked]);
+
   const handleToggleOpen = () => {
-    setIsOpen((prevIsOpen) => !prevIsOpen);
+    if (!isLocked) {
+      setIsOpen((prevIsOpen) => !prevIsOpen);
+    }
   };
 
   const handleSelectOption = (option: Option) => {
@@ -45,8 +53,11 @@ function Bubble({ options, value, onChange }: BubbleProps) {
   ));
 
   return (
-    <div ref={divEl} className={`bubble ${value?.color}`}>
-      <div className="selector" onClick={handleToggleOpen} />
+    <div ref={divEl} className={`bubble ${value ? value.color : ""}`}>
+      <div
+        className={`selector ${isLocked ? "locked" : ""}`}
+        onClick={handleToggleOpen}
+      />
       {isOpen && <div className="options">{renderedOptions}</div>}
     </div>
   );
