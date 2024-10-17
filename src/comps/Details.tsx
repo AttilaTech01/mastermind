@@ -1,5 +1,5 @@
 interface DetailsProps {
-  states: string[];
+  states: string[]; // null | valid | perfect
 }
 
 function Details({ states }: DetailsProps) {

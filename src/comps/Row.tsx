@@ -5,7 +5,7 @@ import Buttons from "./Buttons";
 import Details from "./Details";
 
 interface RowProps {
-  answer: Option[];
+  answer: number[];
   isCurrent: boolean;
   onConfirm: () => void;
 }
@@ -58,7 +58,7 @@ function Row({ answer, isCurrent, onConfirm }: RowProps) {
   const handleConfirm = () => {
     setIsLocked(true);
     onConfirm();
-    /*
+
     const confirmedOptions = [
       firstOption,
       secondOption,
@@ -66,22 +66,28 @@ function Row({ answer, isCurrent, onConfirm }: RowProps) {
       fourthOption,
     ];
 
-    let states = [];
+    const states = []; // null | valid | perfect
 
     for (let i = 0; i < confirmedOptions.length; i++) {
-      console.log(
-        `Comparing answer : ${JSON.stringify(
-          answer[i]
-        )} with choice : ${JSON.stringify(confirmedOptions[i])}`
-      );
-      if (answer[i] === confirmedOptions[i]) {
-        states.push("perfect");
+      const idToSearchFor: number | undefined =
+        confirmedOptions[i]?.id || undefined;
+
+      if (idToSearchFor === undefined) {
+        states.push("null");
+        continue;
       }
-      if (answer[i] === confirmedOptions[i]) {
+      if (idToSearchFor === answer[i]) {
         states.push("perfect");
+        continue;
       }
+      if (answer.includes(idToSearchFor)) {
+        states.push("valid");
+        continue;
+      }
+      states.push("null");
     }
-    */
+
+    setDetailStates(states);
   };
 
   return (

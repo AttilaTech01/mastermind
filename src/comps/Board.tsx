@@ -1,31 +1,10 @@
 import { useState } from "react";
-import { Option } from "../commons/Option";
 import Row from "./Row";
 
-const answer: Option[] = [
-  { id: 1, color: "red" },
-  { id: 2, color: "blue" },
-  { id: 3, color: "yellow" },
-  { id: 4, color: "green" },
-];
+const answer = [1, 2, 3, 4];
 
 function Board() {
   const [currentRow, setCurrentRow] = useState<number>(1);
-
-  /*
-  const rows = [...Array(nbOfRows)].map((element, index) => {
-    return (
-      <Row
-        answer={answer}
-        isCurrent={index === currentRow ? true : false}
-        key={index + 1}
-        onConfirm={() => {
-          setCurrentRow((currentRow) => currentRow + 1);
-        }}
-      />
-    );
-  });
-  */
 
   const handleOnConfirm = () => {
     setCurrentRow((currentRow) => currentRow + 1);
