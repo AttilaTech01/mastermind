@@ -32,6 +32,11 @@ function Row({ answer, isCurrent, onConfirm }: RowProps) {
     setIsLocked(isCurrent ? false : true);
   }, [isCurrent]);
 
+  useEffect(() => {
+    setDetailStates(["null", "null", "null", "null"]);
+    handleClear();
+  }, [answer]);
+
   const handleSelectFirst = (option: Option) => {
     setFirstOption(option);
   };

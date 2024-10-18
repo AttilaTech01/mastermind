@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Row from "./Row";
 
-const answer = [1, 2, 3, 4];
+interface BoardProps {
+  answer: number[];
+}
 
-function Board() {
+function Board({ answer }: BoardProps) {
   const [currentRow, setCurrentRow] = useState<number>(1);
+
+  useEffect(() => {
+    setCurrentRow(1);
+  }, [answer]);
 
   const handleOnConfirm = () => {
     setCurrentRow((currentRow) => currentRow + 1);
