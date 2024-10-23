@@ -47,9 +47,11 @@ function Bubble({ locked, options, value, onChange }: BubbleProps) {
   };
 
   const renderedOptions = options?.map((option) => (
-    <div key={option.id} onClick={() => handleSelectOption(option)}>
-      {option.color}
-    </div>
+    <div
+      className={option.color}
+      key={option.id}
+      onClick={() => handleSelectOption(option)}
+    />
   ));
 
   return (

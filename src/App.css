@@ -66,22 +66,22 @@
 }
 
 /* TODO : can be better */
-.bubble.red {
+.red {
   background-color: red;
 }
-.bubble.blue {
+.blue {
   background-color: blue;
 }
-.bubble.yellow {
+.yellow {
   background-color: yellow;
 }
-.bubble.green {
+.green {
   background-color: green;
 }
-.bubble.pink {
+.pink {
   background-color: pink;
 }
-.bubble.purple {
+.purple {
   background-color: purple;
 }
 
@@ -97,16 +97,20 @@
 }
 
 .bubble > .options {
-  background-color: white;
+  background-color: #1a1a1a;
   border-radius: 8px;
-  color: black;
   padding: 4px;
   position: fixed;
 }
 
-.bubble > .options > div:hover {
-  background-color: skyblue;
+.bubble > .options > div {
   border-radius: 8px;
+  margin: 4px 0 4px 0;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.bubble > .options > div:hover {
   cursor: pointer;
-  padding: 4px;
+  padding: 2px;
 }
