@@ -3,16 +3,25 @@ import Row from "./Row";
 
 interface BoardProps {
   answer: number[];
+  onWin: () => void;
 }
 
-function Board({ answer }: BoardProps) {
+function Board({ answer, onWin }: BoardProps) {
   const [currentRow, setCurrentRow] = useState<number>(1);
 
   useEffect(() => {
     setCurrentRow(1);
   }, [answer]);
 
-  const handleOnConfirm = () => {
+  const isWin = (states: string[]): boolean => {
+    return states.every((value) => value === "perfect");
+  };
+
+  const handleOnConfirm = (states: string[]) => {
+    if (isWin(states)) {
+      onWin();
+      return;
+    }
     setCurrentRow((currentRow) => currentRow + 1);
   };
 

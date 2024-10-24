@@ -7,7 +7,7 @@ import Details from "./Details";
 interface RowProps {
   answer: number[];
   isCurrent: boolean;
-  onConfirm: () => void;
+  onConfirm: (states: string[]) => void;
 }
 
 /* TODO : managing options individually could be better */
@@ -62,7 +62,6 @@ function Row({ answer, isCurrent, onConfirm }: RowProps) {
 
   const handleConfirm = () => {
     setIsLocked(true);
-    onConfirm();
 
     const confirmedOptions = [
       firstOption,
@@ -71,7 +70,7 @@ function Row({ answer, isCurrent, onConfirm }: RowProps) {
       fourthOption,
     ];
 
-    const states = []; // null | valid | perfect
+    const states: string[] = []; // null | valid | perfect
 
     for (let i = 0; i < confirmedOptions.length; i++) {
       const idToSearchFor: number | undefined =
@@ -93,6 +92,7 @@ function Row({ answer, isCurrent, onConfirm }: RowProps) {
     }
 
     setDetailStates(states);
+    onConfirm(states);
   };
 
   return (
