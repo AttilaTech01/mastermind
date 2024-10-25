@@ -3,10 +3,11 @@ import Row from "./Row";
 
 interface BoardProps {
   answer: number[];
+  onDefeat: () => void;
   onWin: () => void;
 }
 
-function Board({ answer, onWin }: BoardProps) {
+function Board({ answer, onDefeat, onWin }: BoardProps) {
   const [currentRow, setCurrentRow] = useState<number>(1);
 
   useEffect(() => {
@@ -23,6 +24,14 @@ function Board({ answer, onWin }: BoardProps) {
       return;
     }
     setCurrentRow((currentRow) => currentRow + 1);
+  };
+
+  const handleLastConfirm = (states: string[]) => {
+    if (isWin(states)) {
+      onWin();
+      return;
+    }
+    onDefeat();
   };
 
   return (
@@ -97,7 +106,7 @@ function Board({ answer, onWin }: BoardProps) {
         answer={answer}
         isCurrent={currentRow === 12 ? true : false}
         key={12}
-        onConfirm={handleOnConfirm}
+        onConfirm={handleLastConfirm}
       />
     </div>
   );
