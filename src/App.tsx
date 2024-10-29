@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { RefreshIcon } from "hugeicons-react";
 import { generateAnswer } from "./commons/AnswerGenerator";
 import Modal from "./commons/UI/Modal/Modal";
 import Board from "./comps/Board";
@@ -40,7 +41,9 @@ function App() {
   return (
     <>
       <h1>Mastermind</h1>
-      <button onClick={toggleRefreshModal}>Refresh</button>
+      <button onClick={toggleRefreshModal}>
+        <RefreshIcon />
+      </button>
       <Board
         answer={answer}
         onDefeat={toggleDefeatModal}
