@@ -1,4 +1,6 @@
-import { Delete02Icon, CheckmarkSquare01Icon } from "hugeicons-react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import Tooltip from "@mui/material/Tooltip";
 
 interface ButtonProps {
   disabled: boolean;
@@ -9,12 +11,16 @@ interface ButtonProps {
 function Buttons({ disabled, onClear, onConfirm }: ButtonProps) {
   return (
     <div className="buttons">
-      <button disabled={disabled} onClick={onConfirm}>
-        <CheckmarkSquare01Icon />
-      </button>
-      <button disabled={disabled} onClick={onClear}>
-        <Delete02Icon />
-      </button>
+      <Tooltip title="Confirm">
+        <button disabled={disabled} onClick={onConfirm}>
+          <CheckCircleIcon />
+        </button>
+      </Tooltip>
+      <Tooltip title="Clear">
+        <button disabled={disabled} onClick={onClear}>
+          <DeleteIcon />
+        </button>
+      </Tooltip>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { RefreshIcon } from "hugeicons-react";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import Tooltip from "@mui/material/Tooltip";
 import { generateAnswer } from "./commons/AnswerGenerator";
 import Modal from "./commons/UI/Modal/Modal";
 import Board from "./comps/Board";
@@ -41,9 +42,11 @@ function App() {
   return (
     <>
       <h1>Mastermind</h1>
-      <button onClick={toggleRefreshModal}>
-        <RefreshIcon />
-      </button>
+      <Tooltip title="Refresh">
+        <button onClick={toggleRefreshModal}>
+          <RefreshIcon />
+        </button>
+      </Tooltip>
       <Board
         answer={answer}
         onDefeat={toggleDefeatModal}
